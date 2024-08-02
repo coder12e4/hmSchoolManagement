@@ -7,6 +7,7 @@ import 'package:hamonschoolmanagement/models/roomModel.dart';
 import '../../core/Contants/colors.dart';
 import '../../core/commonwidgets/commonWidgets/commonWidgets.dart';
 import '../../cubit/classRoom/class_room_cubit.dart';
+import 'classRoomView.dart';
 
 class classRoomList extends StatefulWidget {
   const classRoomList({super.key});
@@ -79,13 +80,13 @@ class _classRoomListState extends State<classRoomList> {
                               itemBuilder: (context, intex) {
                                 return GestureDetector(
                                   onTap: () {
-                                    /*   Navigator.push(
+                                    Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) => detailpage(
-                                                students: objstudentList
-                                                    .students![intex])));
-                                 */
+                                            builder: (context) => classRoomView(
+                                                  classrooms: objclassRoomList
+                                                      .classrooms![intex],
+                                                )));
                                   },
                                   child: Container(
                                     height: 60,

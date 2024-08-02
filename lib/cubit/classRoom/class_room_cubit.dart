@@ -9,6 +9,7 @@ part 'class_room_state.dart';
 class ClassRoomCubit extends Cubit<ClassRoomState> {
   final getClassRepository getClassRoomRepo;
   ClassRoomCubit(this.getClassRoomRepo) : super(ClassRoomInitial());
+
   Future<void> loadStudentData() async {
     emit(ClassRoomLoading());
     try {

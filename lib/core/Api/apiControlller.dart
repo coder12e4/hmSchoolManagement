@@ -36,23 +36,27 @@ class ApiController {
   }
 
   Future<dynamic> updateClassroom(
-    int classroomId,
-    int subjectId,
+    int classroomId1,
+    int subjectId1,
   ) async {
-    final url = Uri.parse(
-        '${Apiconstants.baseUrl}$classroomId?api_key=${Apiconstants.apiKey}');
+    String classroomId = classroomId1.toString();
+    String subjectId = subjectId1.toString();
 
+    final url = Uri.parse(
+        'http://nibrahim.pythonanywhere.com/classrooms/$classroomId?api_key=${Apiconstants.apiKey}');
+    print(url);
     final response = await http.patch(
       url,
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
       },
       body: {
-        'subject': subjectId.toString(),
+        'subject': subjectId,
       },
     );
 
     if (response.statusCode == 200) {
+      print(response.body);
       return json.decode(response.body);
     } else {
       throw Exception('Failed to Update');

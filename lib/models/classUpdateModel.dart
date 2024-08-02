@@ -3,7 +3,7 @@ class updateClassSubject {
   String? layout;
   String? name;
   int? size;
-  String? subject;
+  int? subject;
 
   updateClassSubject(
       {this.id, this.layout, this.name, this.size, this.subject});
