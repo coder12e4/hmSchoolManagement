@@ -1,6 +1,3 @@
-import 'dart:ui';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hamonschoolmanagement/Repository/getRegistrationsRepo.dart';
@@ -35,7 +32,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
   void initState() {
     registerCubit = RegisterCubit(GetRegitrationRepository());
     registerCubit.getRegistrations();
-    // TODO: implement initState
+
     super.initState();
   }
 
@@ -44,17 +41,17 @@ class _RegistrationPageState extends State<RegistrationPage> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Delete Confirmation'),
-          content: Text('Do you want to delete this item?'),
+          title: const Text('Delete Confirmation'),
+          content: const Text('Do you want to delete this item?'),
           actions: <Widget>[
             TextButton(
-              child: Text('No'),
+              child: const Text('No'),
               onPressed: () {
                 Navigator.of(context).pop(); // Dismiss the dialog
               },
             ),
             TextButton(
-              child: Text('Yes'),
+              child: const Text('Yes'),
               onPressed: () {
                 registerCubit.deleteData(id);
                 Navigator.of(context).pop();
@@ -98,15 +95,15 @@ class _RegistrationPageState extends State<RegistrationPage> {
           child: BlocBuilder<RegisterCubit, RegisterState>(
             builder: (context, state) {
               if (state is RegisterListLoading) {
-                return Center(
+                return const Center(
                   child: CircularProgressIndicator(),
                 );
               } else if (state is RegisterListSuccess) {
                 return Container(
-                  padding: EdgeInsets.all(16),
+                  padding: const EdgeInsets.all(16),
                   child: Column(
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         height: 30,
                       ),
                       Row(
@@ -124,11 +121,11 @@ class _RegistrationPageState extends State<RegistrationPage> {
                           )
                         ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       const hmTxtLarge(text: "Register"),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       Expanded(
@@ -151,9 +148,9 @@ class _RegistrationPageState extends State<RegistrationPage> {
                                         },
                                         child: Container(
                                           height: 60,
-                                          margin: EdgeInsets.only(
+                                          margin: const EdgeInsets.only(
                                               top: 10, left: 0, right: 0),
-                                          padding: EdgeInsets.all(10),
+                                          padding: const EdgeInsets.all(10),
                                           decoration: BoxDecoration(
                                               borderRadius:
                                                   BorderRadius.circular(10),
@@ -166,13 +163,10 @@ class _RegistrationPageState extends State<RegistrationPage> {
                                                 CrossAxisAlignment.center,
                                             children: [
                                               hmTxtLarge(
-                                                text: "Registration Id : " +
-                                                    objRegistrationList
-                                                        .registrations![intex]
-                                                        .id!
-                                                        .toString(),
+                                                text:
+                                                    "Registration Id : ${objRegistrationList.registrations![intex].id!}",
                                               ),
-                                              Icon(Icons.chevron_right)
+                                              const Icon(Icons.chevron_right)
                                             ],
                                           ),
                                         ),
@@ -185,8 +179,9 @@ class _RegistrationPageState extends State<RegistrationPage> {
                         child: Container(
                           height: 40,
                           width: 150,
-                          margin: EdgeInsets.only(top: 10, left: 0, right: 0),
-                          padding: EdgeInsets.all(10),
+                          margin:
+                              const EdgeInsets.only(top: 10, left: 0, right: 0),
+                          padding: const EdgeInsets.all(10),
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
                               color: HexColor("007AFF").withOpacity(.1)),
@@ -205,7 +200,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                           ),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 30,
                       ),
                     ],
@@ -215,10 +210,10 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 return Container();
               } else if (state is RegisterSceenInitial) {
                 return Container(
-                  padding: EdgeInsets.all(16),
+                  padding: const EdgeInsets.all(16),
                   child: Column(
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         height: 30,
                       ),
                       Row(
@@ -236,11 +231,11 @@ class _RegistrationPageState extends State<RegistrationPage> {
                           )
                         ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       const hmTxtLarge(text: "Register"),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       GestureDetector(
@@ -249,8 +244,9 @@ class _RegistrationPageState extends State<RegistrationPage> {
                         },
                         child: Container(
                           height: 60,
-                          margin: EdgeInsets.only(top: 10, left: 0, right: 0),
-                          padding: EdgeInsets.all(10),
+                          margin:
+                              const EdgeInsets.only(top: 10, left: 0, right: 0),
+                          padding: const EdgeInsets.all(10),
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
                               color: HmColors.listBackgroundGray),
@@ -261,12 +257,12 @@ class _RegistrationPageState extends State<RegistrationPage> {
                               hmTxtMedium(
                                 text: studentName,
                               ),
-                              Icon(Icons.chevron_right)
+                              const Icon(Icons.chevron_right)
                             ],
                           ),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       GestureDetector(
@@ -275,8 +271,9 @@ class _RegistrationPageState extends State<RegistrationPage> {
                         },
                         child: Container(
                           height: 60,
-                          margin: EdgeInsets.only(top: 10, left: 0, right: 0),
-                          padding: EdgeInsets.all(10),
+                          margin:
+                              const EdgeInsets.only(top: 10, left: 0, right: 0),
+                          padding: const EdgeInsets.all(10),
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
                               color: HmColors.listBackgroundGray),
@@ -287,12 +284,12 @@ class _RegistrationPageState extends State<RegistrationPage> {
                               hmTxtMedium(
                                 text: studentSubject,
                               ),
-                              Icon(Icons.chevron_right)
+                              const Icon(Icons.chevron_right)
                             ],
                           ),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 60,
                       ),
                       Row(
@@ -311,7 +308,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(10),
                                   color: HexColor("0FAB76")),
-                              child: Text(
+                              child: const Text(
                                 "Register",
                                 style: TextStyle(
                                     fontWeight: FontWeight.w600,
@@ -325,7 +322,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   ),
                 );
               } else if (state is RegisterStudentListLoading) {
-                return Center(
+                return const Center(
                   child: CircularProgressIndicator(),
                 );
               } else if (state is RegisterStudentListSuccess) {
@@ -333,7 +330,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   margin: const EdgeInsets.only(left: 16, right: 16, top: 6),
                   child: Column(
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         height: 30,
                       ),
                       Row(
@@ -351,7 +348,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                           )
                         ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       const hmTxtLarge(text: "Students"),
@@ -368,9 +365,9 @@ class _RegistrationPageState extends State<RegistrationPage> {
                                   },
                                   child: Container(
                                     height: 60,
-                                    margin: EdgeInsets.only(
+                                    margin: const EdgeInsets.only(
                                         top: 10, left: 0, right: 0),
-                                    padding: EdgeInsets.all(10),
+                                    padding: const EdgeInsets.all(10),
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(10),
                                         color: HmColors.listBackgroundGray),
@@ -410,7 +407,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
               } else if (state is RegisterStudentListFail) {
                 return Container();
               } else if (state is RegisterSubjectListLoading) {
-                return Center(
+                return const Center(
                   child: CircularProgressIndicator(),
                 );
               } else if (state is RegisterSubjectListSuccess) {
@@ -418,7 +415,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   margin: const EdgeInsets.only(left: 16, right: 16, top: 6),
                   child: Column(
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         height: 30,
                       ),
                       Row(
@@ -436,7 +433,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                           )
                         ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       const hmTxtLarge(text: "Subjects"),
@@ -453,9 +450,9 @@ class _RegistrationPageState extends State<RegistrationPage> {
                                   },
                                   child: Container(
                                     height: 60,
-                                    margin: EdgeInsets.only(
+                                    margin: const EdgeInsets.only(
                                         top: 10, left: 0, right: 0),
-                                    padding: EdgeInsets.all(10),
+                                    padding: const EdgeInsets.all(10),
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(10),
                                         color: HmColors.listBackgroundGray),
@@ -503,13 +500,13 @@ class _RegistrationPageState extends State<RegistrationPage> {
               } else if (state is RegisterSubjectListFail) {
                 return Container();
               } else if (state is RegisterStudentAndSubjectDetailsLOading) {
-                return Center(child: CircularProgressIndicator());
+                return const Center(child: CircularProgressIndicator());
               } else if (state is RegisterStudentAndSubjectDetailsSucces) {
                 return Container(
-                  padding: EdgeInsets.all(16),
+                  padding: const EdgeInsets.all(16),
                   child: Column(
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         height: 30,
                       ),
                       Row(
@@ -527,17 +524,18 @@ class _RegistrationPageState extends State<RegistrationPage> {
                           )
                         ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       const hmTxtLarge(text: "Register"),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       Container(
                         height: 90,
-                        margin: EdgeInsets.only(top: 10, left: 0, right: 0),
-                        padding: EdgeInsets.all(10),
+                        margin:
+                            const EdgeInsets.only(top: 10, left: 0, right: 0),
+                        padding: const EdgeInsets.all(10),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
                             color: HmColors.listBackgroundGray),
@@ -549,16 +547,16 @@ class _RegistrationPageState extends State<RegistrationPage> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                hmTxtMedium(
+                                const hmTxtMedium(
                                   text: "Student details",
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 4,
                                 ),
                                 hmTxtSmall(
                                   text: state.objectStudent.name!,
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 4,
                                 ),
                                 hmTxtSmall(text: state.objectStudent.email!)
@@ -571,13 +569,14 @@ class _RegistrationPageState extends State<RegistrationPage> {
                           ],
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       Container(
                         height: 90,
-                        margin: EdgeInsets.only(top: 10, left: 0, right: 0),
-                        padding: EdgeInsets.all(10),
+                        margin:
+                            const EdgeInsets.only(top: 10, left: 0, right: 0),
+                        padding: const EdgeInsets.all(10),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
                             color: HmColors.listBackgroundGray),
@@ -589,16 +588,16 @@ class _RegistrationPageState extends State<RegistrationPage> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                hmTxtMedium(
+                                const hmTxtMedium(
                                   text: "Subject details",
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 4,
                                 ),
                                 hmTxtSmall(
                                   text: state.objsubjects.name!,
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 4,
                                 ),
                                 hmTxtSmall(text: state.objsubjects.teacher!)
@@ -619,7 +618,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                           ],
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       Row(
@@ -633,12 +632,12 @@ class _RegistrationPageState extends State<RegistrationPage> {
                             },
                             child: Container(
                               height: 40,
-                              padding: EdgeInsets.all(10),
+                              padding: const EdgeInsets.all(10),
                               alignment: Alignment.center,
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(10),
                                   color: HexColor("F9614F")),
-                              child: Text(
+                              child: const Text(
                                 "Delete Registration",
                                 style: TextStyle(
                                     fontWeight: FontWeight.w600,
@@ -652,15 +651,15 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   ),
                 );
               } else if (state is RegisterStudentAndSubjectDetailsFail) {
-                return Center(
+                return const Center(
                   child: Text("fail"),
                 );
               } else if (state is deletLoding) {
-                return Center(child: CircularProgressIndicator());
+                return const Center(child: CircularProgressIndicator());
               } else if (state is deletSuccess) {
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
-                    content: Text(
+                    content: const Text(
                       'delete Successfull',
                     ),
                     backgroundColor: Colors.green.shade300,
@@ -668,15 +667,15 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 );
                 return Center(
                   child: Container(
-                      padding: EdgeInsets.all(10),
+                      padding: const EdgeInsets.all(10),
                       color: Colors.green,
-                      child: Text(
+                      child: const Text(
                         "User Deleted Successfully",
                         style: TextStyle(color: Colors.white),
                       )),
                 );
               } else if (state is deletSuccess) {
-                return Center(
+                return const Center(
                   child: Text("SomeThing wrong try again"),
                 );
               } else {

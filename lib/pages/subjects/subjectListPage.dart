@@ -1,13 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hamonschoolmanagement/Repository/getStudentsRepository.dart';
 import 'package:hamonschoolmanagement/core/commonwidgets/commonWidgets/commonWidgets.dart';
-import 'package:hamonschoolmanagement/cubit/studentList/student_list_cubit.dart';
 import 'package:hamonschoolmanagement/cubit/subjects/subjects_cubit.dart';
-import 'package:hamonschoolmanagement/models/studentModel.dart';
 import 'package:hamonschoolmanagement/models/subjectList.dart';
-import 'package:hamonschoolmanagement/pages/student/DetailPage.dart';
 import 'package:hamonschoolmanagement/pages/subjects/subjectDetailPage.dart';
 
 import '../../Repository/getSubjectListRepo.dart';
@@ -25,9 +20,9 @@ class _SubjectListPageState extends State<SubjectListPage> {
   late subjectList objSubjectList;
   @override
   void initState() {
-    // TODO: implement initState
     subjectsCubit = SubjectsCubit(Getsubjectlistrepository());
     subjectsCubit.loadStudentData();
+    super.initState();
   }
 
   @override
@@ -48,7 +43,7 @@ class _SubjectListPageState extends State<SubjectListPage> {
           child: BlocBuilder<SubjectsCubit, SubjectsState>(
             builder: (context, state) {
               if (state is SubjectsLoading) {
-                return Center(
+                return const Center(
                   child: CircularProgressIndicator(),
                 );
               } else if (state is SubjectsSuccess) {
@@ -56,7 +51,7 @@ class _SubjectListPageState extends State<SubjectListPage> {
                   margin: const EdgeInsets.only(left: 16, right: 16, top: 6),
                   child: Column(
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         height: 30,
                       ),
                       Row(
@@ -74,7 +69,7 @@ class _SubjectListPageState extends State<SubjectListPage> {
                           )
                         ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       const hmTxtLarge(text: "Subjects"),
@@ -94,9 +89,9 @@ class _SubjectListPageState extends State<SubjectListPage> {
                                   },
                                   child: Container(
                                     height: 60,
-                                    margin: EdgeInsets.only(
+                                    margin: const EdgeInsets.only(
                                         top: 10, left: 0, right: 0),
-                                    padding: EdgeInsets.all(10),
+                                    padding: const EdgeInsets.all(10),
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(10),
                                         color: HmColors.listBackgroundGray),
@@ -142,7 +137,7 @@ class _SubjectListPageState extends State<SubjectListPage> {
                   ),
                 );
               } else if (state is SubjectsError) {
-                return Center(
+                return const Center(
                   child: Icon(
                     Icons.hourglass_empty,
                     size: 24,

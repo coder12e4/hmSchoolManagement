@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hamonschoolmanagement/Repository/getStudentsRepository.dart';
@@ -22,9 +21,9 @@ class _StudentListPageState extends State<StudentListPage> {
 
   @override
   void initState() {
-    // TODO: implement initState
     studentListCubit = StudentListCubit(StudentListRepo());
     studentListCubit.loadStudentData();
+    super.initState();
   }
 
   @override
@@ -45,7 +44,7 @@ class _StudentListPageState extends State<StudentListPage> {
           child: BlocBuilder<StudentListCubit, StudentListState>(
             builder: (context, state) {
               if (state is StudentListLoding) {
-                return Center(
+                return const Center(
                   child: CircularProgressIndicator(),
                 );
               } else if (state is StudentListSucces) {
@@ -53,7 +52,7 @@ class _StudentListPageState extends State<StudentListPage> {
                   margin: const EdgeInsets.only(left: 16, right: 16, top: 6),
                   child: Column(
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         height: 30,
                       ),
                       Row(
@@ -71,7 +70,7 @@ class _StudentListPageState extends State<StudentListPage> {
                           )
                         ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       const hmTxtLarge(text: "Students"),
@@ -90,9 +89,9 @@ class _StudentListPageState extends State<StudentListPage> {
                                   },
                                   child: Container(
                                     height: 60,
-                                    margin: EdgeInsets.only(
+                                    margin: const EdgeInsets.only(
                                         top: 10, left: 0, right: 0),
-                                    padding: EdgeInsets.all(10),
+                                    padding: const EdgeInsets.all(10),
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(10),
                                         color: HmColors.listBackgroundGray),
@@ -130,7 +129,7 @@ class _StudentListPageState extends State<StudentListPage> {
                   ),
                 );
               } else if (state is StudentListFail) {
-                return Center(
+                return const Center(
                   child: Icon(
                     Icons.hourglass_empty,
                     size: 24,

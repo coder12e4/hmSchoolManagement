@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hexcolor/hexcolor.dart';
@@ -12,15 +11,15 @@ import '../../models/classUpdateModel.dart';
 import '../../models/roomModel.dart';
 import '../../models/subjectList.dart';
 
-class classRoomView extends StatefulWidget {
+class ClassRoomView extends StatefulWidget {
   final Classrooms classrooms;
-  const classRoomView({super.key, required this.classrooms});
+  const ClassRoomView({super.key, required this.classrooms});
 
   @override
-  State<classRoomView> createState() => _classRoomViewState();
+  State<ClassRoomView> createState() => _ClassRoomViewState();
 }
 
-class _classRoomViewState extends State<classRoomView> {
+class _ClassRoomViewState extends State<ClassRoomView> {
   late ClassUpdateCubit classRoomUpdateCubit;
   late Classrooms objclassrooms;
   late subjectList objSubjectList;
@@ -28,9 +27,9 @@ class _classRoomViewState extends State<classRoomView> {
 
   @override
   void initState() {
-    classRoomUpdateCubit = ClassUpdateCubit(getClassRepository());
+    classRoomUpdateCubit = ClassUpdateCubit(GetClassRepos());
     objclassrooms = widget.classrooms;
-    // TODO: implement initState
+
     super.initState();
   }
 
@@ -65,7 +64,7 @@ class _classRoomViewState extends State<classRoomView> {
                           onTap: () {
                             Navigator.pop(context);
                           },
-                          child: Icon(
+                          child: const Icon(
                             Icons.keyboard_arrow_left,
                             size: 28,
                           ),
@@ -73,12 +72,12 @@ class _classRoomViewState extends State<classRoomView> {
                       ],
                     ),
                     hmTxtLarge(text: widget.classrooms.name!),
-                    SizedBox(
+                    const SizedBox(
                       height: 80,
                     ),
                     Container(
-                      padding: EdgeInsets.only(left: 16, right: 16),
-                      margin: EdgeInsets.only(left: 16, right: 16),
+                      padding: const EdgeInsets.only(left: 16, right: 16),
+                      margin: const EdgeInsets.only(left: 16, right: 16),
                       decoration: BoxDecoration(
                           color: HmColors.listBackgroundGray,
                           borderRadius: BorderRadius.circular(4)),
@@ -87,7 +86,7 @@ class _classRoomViewState extends State<classRoomView> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          hmTxtMedium(text: "Add Subject"),
+                          const hmTxtMedium(text: "Add Subject"),
                           GestureDetector(
                             onTap: () {
                               classRoomUpdateCubit.loadSubjectsData();
@@ -110,7 +109,7 @@ class _classRoomViewState extends State<classRoomView> {
                         ],
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 40,
                     ),
                     widget.classrooms.layout == "conference"
@@ -119,13 +118,13 @@ class _classRoomViewState extends State<classRoomView> {
                   ],
                 );
               } else if (state is ClassUpdateLoadSubjects) {
-                return Center(child: CircularProgressIndicator());
+                return const Center(child: CircularProgressIndicator());
               } else if (state is ClassUpdateLoadSubjectSuccess) {
                 return Container(
                   margin: const EdgeInsets.only(left: 16, right: 16, top: 6),
                   child: Column(
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         height: 30,
                       ),
                       Row(
@@ -143,7 +142,7 @@ class _classRoomViewState extends State<classRoomView> {
                           )
                         ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       const hmTxtLarge(text: "Subjects"),
@@ -160,9 +159,9 @@ class _classRoomViewState extends State<classRoomView> {
                                   },
                                   child: Container(
                                     height: 60,
-                                    margin: EdgeInsets.only(
+                                    margin: const EdgeInsets.only(
                                         top: 10, left: 0, right: 0),
-                                    padding: EdgeInsets.all(10),
+                                    padding: const EdgeInsets.all(10),
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(10),
                                         color: HmColors.listBackgroundGray),
@@ -221,7 +220,7 @@ class _classRoomViewState extends State<classRoomView> {
                           onTap: () {
                             Navigator.pop(context);
                           },
-                          child: Icon(
+                          child: const Icon(
                             Icons.keyboard_arrow_left,
                             size: 28,
                           ),
@@ -229,12 +228,12 @@ class _classRoomViewState extends State<classRoomView> {
                       ],
                     ),
                     hmTxtLarge(text: widget.classrooms.name!),
-                    SizedBox(
+                    const SizedBox(
                       height: 80,
                     ),
                     Container(
-                      padding: EdgeInsets.only(left: 16, right: 16),
-                      margin: EdgeInsets.only(left: 16, right: 16),
+                      padding: const EdgeInsets.only(left: 16, right: 16),
+                      margin: const EdgeInsets.only(left: 16, right: 16),
                       decoration: BoxDecoration(
                           color: HmColors.listBackgroundGray,
                           borderRadius: BorderRadius.circular(4)),
@@ -279,7 +278,7 @@ class _classRoomViewState extends State<classRoomView> {
                         ],
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 40,
                     ),
                     widget.classrooms.layout == "conference"
@@ -287,7 +286,7 @@ class _classRoomViewState extends State<classRoomView> {
                         : layoutClassRoom(),
                     Container(
                       height: 30,
-                      margin: EdgeInsets.only(left: 16, right: 16),
+                      margin: const EdgeInsets.only(left: 16, right: 16),
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(4),
@@ -312,140 +311,134 @@ class _classRoomViewState extends State<classRoomView> {
   }
 
   Widget layoutConference() {
-    return Container(
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Container(
-            child: Column(
-              children: [
-                Image.asset(
-                  "assets/images/sitting.png",
-                  height: 24,
-                  width: 24,
-                ),
-                SizedBox(
-                  height: 12,
-                ),
-                Image.asset(
-                  "assets/images/sitting.png",
-                  height: 24,
-                  width: 24,
-                ),
-                SizedBox(
-                  height: 12,
-                ),
-                Image.asset(
-                  "assets/images/sitting.png",
-                  height: 24,
-                  width: 24,
-                ),
-                SizedBox(
-                  height: 12,
-                ),
-                Image.asset(
-                  "assets/images/sitting.png",
-                  height: 24,
-                  width: 24,
-                ),
-                SizedBox(
-                  height: 12,
-                ),
-                Image.asset(
-                  "assets/images/sitting.png",
-                  height: 24,
-                  width: 24,
-                ),
-                SizedBox(
-                  height: 12,
-                )
-              ],
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Column(
+          children: [
+            Image.asset(
+              "assets/images/sitting.png",
+              height: 24,
+              width: 24,
             ),
-          ),
-          Container(
-            width: 120,
-            height: MediaQuery.of(context).size.height * 0.3,
-            color: HmColors.listBackgroundGray,
-          ),
-          Container(
-            child: Column(
-              children: [
-                Transform.flip(
-                  flipX: true,
-                  child: Image.asset(
-                    "assets/images/sitting.png",
-                    height: 24,
-                    width: 24,
-                  ),
-                ),
-                SizedBox(
-                  height: 12,
-                ),
-                Transform.flip(
-                  flipX: true,
-                  child: Image.asset(
-                    "assets/images/sitting.png",
-                    height: 24,
-                    width: 24,
-                  ),
-                ),
-                SizedBox(
-                  height: 12,
-                ),
-                Transform.flip(
-                  flipX: true,
-                  child: Image.asset(
-                    "assets/images/sitting.png",
-                    height: 24,
-                    width: 24,
-                  ),
-                ),
-                SizedBox(
-                  height: 12,
-                ),
-                Transform.flip(
-                  flipX: true,
-                  child: Image.asset(
-                    "assets/images/sitting.png",
-                    height: 24,
-                    width: 24,
-                  ),
-                ),
-                SizedBox(
-                  height: 12,
-                ),
-                Transform.flip(
-                  flipX: true,
-                  child: Image.asset(
-                    "assets/images/sitting.png",
-                    height: 24,
-                    width: 24,
-                  ),
-                ),
-                SizedBox(
-                  height: 12,
-                )
-              ],
+            const SizedBox(
+              height: 12,
             ),
-          ),
-        ],
-      ),
+            Image.asset(
+              "assets/images/sitting.png",
+              height: 24,
+              width: 24,
+            ),
+            const SizedBox(
+              height: 12,
+            ),
+            Image.asset(
+              "assets/images/sitting.png",
+              height: 24,
+              width: 24,
+            ),
+            const SizedBox(
+              height: 12,
+            ),
+            Image.asset(
+              "assets/images/sitting.png",
+              height: 24,
+              width: 24,
+            ),
+            const SizedBox(
+              height: 12,
+            ),
+            Image.asset(
+              "assets/images/sitting.png",
+              height: 24,
+              width: 24,
+            ),
+            const SizedBox(
+              height: 12,
+            )
+          ],
+        ),
+        Container(
+          width: 120,
+          height: MediaQuery.of(context).size.height * 0.3,
+          color: HmColors.listBackgroundGray,
+        ),
+        Column(
+          children: [
+            Transform.flip(
+              flipX: true,
+              child: Image.asset(
+                "assets/images/sitting.png",
+                height: 24,
+                width: 24,
+              ),
+            ),
+            const SizedBox(
+              height: 12,
+            ),
+            Transform.flip(
+              flipX: true,
+              child: Image.asset(
+                "assets/images/sitting.png",
+                height: 24,
+                width: 24,
+              ),
+            ),
+            const SizedBox(
+              height: 12,
+            ),
+            Transform.flip(
+              flipX: true,
+              child: Image.asset(
+                "assets/images/sitting.png",
+                height: 24,
+                width: 24,
+              ),
+            ),
+            const SizedBox(
+              height: 12,
+            ),
+            Transform.flip(
+              flipX: true,
+              child: Image.asset(
+                "assets/images/sitting.png",
+                height: 24,
+                width: 24,
+              ),
+            ),
+            const SizedBox(
+              height: 12,
+            ),
+            Transform.flip(
+              flipX: true,
+              child: Image.asset(
+                "assets/images/sitting.png",
+                height: 24,
+                width: 24,
+              ),
+            ),
+            const SizedBox(
+              height: 12,
+            )
+          ],
+        ),
+      ],
     );
   }
 
   Widget layoutClassRoom() {
-    return Container(
+    return SizedBox(
       height: MediaQuery.of(context).size.height * .5,
       width: MediaQuery.of(context).size.width * .5,
       child: GridView.builder(
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 4,
           ),
           itemCount: 20,
           itemBuilder: (context, inted) {
             return Container(
-              margin: EdgeInsets.all(2),
+              margin: const EdgeInsets.all(2),
               decoration:
                   BoxDecoration(border: Border.all(color: Colors.black)),
               child: Image.asset(

@@ -7,7 +7,7 @@ import '../../Repository/getClassRepository.dart';
 part 'class_room_state.dart';
 
 class ClassRoomCubit extends Cubit<ClassRoomState> {
-  final getClassRepository getClassRoomRepo;
+  final GetClassRepos getClassRoomRepo;
   ClassRoomCubit(this.getClassRoomRepo) : super(ClassRoomInitial());
 
   Future<void> loadStudentData() async {

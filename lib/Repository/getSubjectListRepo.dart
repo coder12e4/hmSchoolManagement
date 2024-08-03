@@ -9,9 +9,9 @@ class Getsubjectlistrepository extends SubjectListRepo {
   ApiController apiController = ApiController();
   @override
   Future<subjectList> getSubjectList() async {
-    var SubjectListrsp =
+    var subjectListrsp =
         await ApiController().getData("subjects/?api_key=D74Fb");
-    subjectList objStudentList = subjectList.fromJson(SubjectListrsp);
+    subjectList objStudentList = subjectList.fromJson(subjectListrsp);
     return objStudentList;
   }
 }

@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:hamonschoolmanagement/models/subjectList.dart';
 
 import '../../core/commonwidgets/commonWidgets/commonWidgets.dart';
-import '../../models/studentModel.dart';
 
 class SubjectDetailpage extends StatefulWidget {
   final Subjects subject;
@@ -31,7 +29,7 @@ class _SubjectDetailpageState extends State<SubjectDetailpage> {
                 onTap: () {
                   Navigator.pop(context);
                 },
-                child: Icon(
+                child: const Icon(
                   Icons.keyboard_arrow_left,
                   size: 28,
                 ),
@@ -85,8 +83,8 @@ class _SubjectDetailpageState extends State<SubjectDetailpage> {
             ],
           ),
           const Expanded(
-            child: SizedBox(),
             flex: 7,
+            child: SizedBox(),
           ),
         ],
       ),

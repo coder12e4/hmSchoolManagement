@@ -8,7 +8,7 @@ import '../../../models/subjectList.dart';
 part 'class_update_state.dart';
 
 class ClassUpdateCubit extends Cubit<ClassUpdateState> {
-  getClassRepository objClassrepository;
+  GetClassRepos objClassrepository;
 
   ClassUpdateCubit(this.objClassrepository) : super(ClassUpdateInitial());
 

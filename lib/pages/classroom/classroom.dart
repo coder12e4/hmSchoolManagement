@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hamonschoolmanagement/Repository/getClassRepository.dart';
@@ -9,20 +8,19 @@ import '../../core/commonwidgets/commonWidgets/commonWidgets.dart';
 import '../../cubit/classRoom/class_room_cubit.dart';
 import 'classRoomView.dart';
 
-class classRoomList extends StatefulWidget {
-  const classRoomList({super.key});
+class ClassRoomList extends StatefulWidget {
+  const ClassRoomList({super.key});
 
   @override
-  State<classRoomList> createState() => _classRoomListState();
+  State<ClassRoomList> createState() => _ClassRoomListState();
 }
 
-class _classRoomListState extends State<classRoomList> {
+class _ClassRoomListState extends State<ClassRoomList> {
   late ClassRoomCubit classRoomCubit;
   late roomModel objclassRoomList;
   @override
   void initState() {
-    // TODO: implement initState
-    classRoomCubit = ClassRoomCubit(getClassRepository());
+    classRoomCubit = ClassRoomCubit(GetClassRepos());
     classRoomCubit.loadStudentData();
   }
 
@@ -44,7 +42,7 @@ class _classRoomListState extends State<classRoomList> {
           child: BlocBuilder<ClassRoomCubit, ClassRoomState>(
             builder: (context, state) {
               if (state is ClassRoomLoading) {
-                return Center(
+                return const Center(
                   child: CircularProgressIndicator(),
                 );
               } else if (state is ClassRoomSuccess) {
@@ -52,7 +50,7 @@ class _classRoomListState extends State<classRoomList> {
                   margin: const EdgeInsets.only(left: 16, right: 16, top: 6),
                   child: Column(
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         height: 30,
                       ),
                       Row(
@@ -70,10 +68,10 @@ class _classRoomListState extends State<classRoomList> {
                           )
                         ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
-                      hmTxtLarge(text: "Class Rooms"),
+                      const hmTxtLarge(text: "Class Rooms"),
                       Expanded(
                           child: ListView.builder(
                               itemCount: objclassRoomList.classrooms!.length,
@@ -83,16 +81,16 @@ class _classRoomListState extends State<classRoomList> {
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) => classRoomView(
+                                            builder: (context) => ClassRoomView(
                                                   classrooms: objclassRoomList
                                                       .classrooms![intex],
                                                 )));
                                   },
                                   child: Container(
                                     height: 60,
-                                    margin: EdgeInsets.only(
+                                    margin: const EdgeInsets.only(
                                         top: 10, left: 0, right: 0),
-                                    padding: EdgeInsets.all(10),
+                                    padding: const EdgeInsets.all(10),
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(10),
                                         color: HmColors.listBackgroundGray),
@@ -128,7 +126,7 @@ class _classRoomListState extends State<classRoomList> {
                                                   .classrooms![intex].size!
                                                   .toString(),
                                             ),
-                                            hmTxtSmall(text: "Seats")
+                                            const hmTxtSmall(text: "Seats")
                                           ],
                                         ),
                                       ],
@@ -140,7 +138,7 @@ class _classRoomListState extends State<classRoomList> {
                   ),
                 );
               } else if (state is ClassRoomFailed) {
-                return Center(
+                return const Center(
                   child: Icon(
                     Icons.hourglass_empty,
                     size: 24,

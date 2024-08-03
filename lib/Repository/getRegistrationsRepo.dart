@@ -23,7 +23,7 @@ class GetRegitrationRepository extends GetRegitrationRepo {
   @override
   Future<registerList> getRegisterList() async {
     var objRegisterList = await apiController
-        .getData("registration/?api_key=" + Apiconstants.apiKey);
+        .getData("registration/?api_key=${Apiconstants.apiKey}");
     registerList objregisterList = registerList.fromJson(objRegisterList);
     return objregisterList;
   }
@@ -37,9 +37,9 @@ class GetRegitrationRepository extends GetRegitrationRepo {
 
   @override
   Future<subjectList> getSubjectList() async {
-    var SubjectListrsp =
+    var subjectListrsp =
         await ApiController().getData("subjects/?api_key=D74Fb");
-    subjectList objStudentList = subjectList.fromJson(SubjectListrsp);
+    subjectList objStudentList = subjectList.fromJson(subjectListrsp);
     return objStudentList;
   }
 
@@ -53,14 +53,14 @@ class GetRegitrationRepository extends GetRegitrationRepo {
           StudentRegisterModel.fromJson(objregister);
       return studentRegisterModel;
     } catch (e) {
-      throw (e);
+      rethrow;
     }
   }
 
   @override
   Future<DetailsOfStudent> getDetailsOfSudent(String id) async {
     var objDetails = await apiController
-        .getData("registration/$id?api_key=" + Apiconstants.apiKey);
+        .getData("registration/$id?api_key=${Apiconstants.apiKey}");
     DetailsOfStudent obj = DetailsOfStudent.fromJson(objDetails);
     return obj;
   }
