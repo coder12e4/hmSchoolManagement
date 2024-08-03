@@ -4,6 +4,7 @@ import 'package:hamonschoolmanagement/core/commonwidgets/commonWidgets/commonWid
 import 'package:hamonschoolmanagement/cubit/home/home_cubit.dart';
 import 'package:hamonschoolmanagement/models/studentModel.dart';
 import 'package:hamonschoolmanagement/models/subjectList.dart';
+import 'package:hamonschoolmanagement/pages/RegistrationPage/RegistrationPage.dart';
 import 'package:hamonschoolmanagement/pages/student/studentListPage.dart';
 import 'package:hamonschoolmanagement/pages/subjects/subjectListPage.dart';
 
@@ -152,7 +153,7 @@ class _homePageState extends State<homePage> {
         break;
       case "Registration":
         Navigator.push(context,
-            MaterialPageRoute(builder: (context) => SubjectListPage()));
+            MaterialPageRoute(builder: (context) => RegistrationPage()));
         break;
     }
   }

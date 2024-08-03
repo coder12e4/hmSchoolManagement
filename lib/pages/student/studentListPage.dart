@@ -19,6 +19,7 @@ class StudentListPage extends StatefulWidget {
 class _StudentListPageState extends State<StudentListPage> {
   late StudentListCubit studentListCubit;
   late studentList objstudentList;
+
   @override
   void initState() {
     // TODO: implement initState
