@@ -62,3 +62,9 @@ final class RegisterStudentAndSubjectDetailsFail extends RegisterState {
 
   RegisterStudentAndSubjectDetailsFail(this.Error);
 }
+
+final class deletLoding extends RegisterState {}
+
+final class deletSuccess extends RegisterState {}
+
+final class deletfail extends RegisterState {}

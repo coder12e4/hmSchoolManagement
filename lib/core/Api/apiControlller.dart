@@ -72,4 +72,22 @@ class ApiController {
       throw Exception('Failed to Update');
     }
   }
+
+  Future<dynamic> deleteItem(String id) async {
+    final url = Uri.parse(
+        'http://nibrahim.pythonanywhere.com/registration/$id?api_key=' +
+            Apiconstants.apiKey);
+    print(url);
+    try {
+      final response = await http.delete(url);
+
+      if (response.statusCode == 200) {
+        return json.decode(response.body);
+      } else {
+        print('Failed to delete item: ${response.statusCode}');
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
 }

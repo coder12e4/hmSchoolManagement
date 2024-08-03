@@ -3,6 +3,7 @@ import 'package:hamonschoolmanagement/core/Contants/apiConstants.dart';
 
 import '../models/registerModels/StudentRegisterModel.dart';
 
+import '../models/registerModels/deleteModel.dart';
 import '../models/registerModels/detailsOfStudent.dart';
 import '../models/registerModels/registerModels.dart';
 import '../models/studentModel.dart';
@@ -14,6 +15,7 @@ abstract class GetRegitrationRepo {
   Future<subjectList> getSubjectList();
   Future<StudentRegisterModel> registerStudent(int student, int subject);
   Future<DetailsOfStudent> getDetailsOfSudent(String id);
+  Future<deleteModel> deleteStudent(String id);
 }
 
 class GetRegitrationRepository extends GetRegitrationRepo {
@@ -60,6 +62,13 @@ class GetRegitrationRepository extends GetRegitrationRepo {
     var objDetails = await apiController
         .getData("registration/$id?api_key=" + Apiconstants.apiKey);
     DetailsOfStudent obj = DetailsOfStudent.fromJson(objDetails);
+    return obj;
+  }
+
+  @override
+  Future<deleteModel> deleteStudent(String id) async {
+    var objDelete = await apiController.deleteItem(id);
+    deleteModel obj = deleteModel.fromJson(objDelete);
     return obj;
   }
 }

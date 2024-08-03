@@ -80,6 +80,7 @@ class RegisterCubit extends Cubit<RegisterState> {
     try {
       DetailsOfStudent? obj =
           await getRegitrationRepository.getDetailsOfSudent(id);
+
       subjectList? objSubjectList =
           await getRegitrationRepository.getSubjectList();
       studentList? objstudentList =
@@ -92,6 +93,18 @@ class RegisterCubit extends Cubit<RegisterState> {
     } catch (e) {
       print(e);
       emit(RegisterStudentAndSubjectDetailsFail("empty"));
+    }
+  }
+
+  Future<void> deleteData(String id) async {
+    emit(deletLoding());
+    try {
+      var obj = await getRegitrationRepository.deleteStudent(id);
+      emit(deletSuccess());
+
+      getRegistrations();
+    } catch (e) {
+      emit(deletfail());
     }
   }
 }

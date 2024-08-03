@@ -39,6 +39,33 @@ class _RegistrationPageState extends State<RegistrationPage> {
     super.initState();
   }
 
+  void _showDeleteDialog(BuildContext context, String id) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Delete Confirmation'),
+          content: Text('Do you want to delete this item?'),
+          actions: <Widget>[
+            TextButton(
+              child: Text('No'),
+              onPressed: () {
+                Navigator.of(context).pop(); // Dismiss the dialog
+              },
+            ),
+            TextButton(
+              child: Text('Yes'),
+              onPressed: () {
+                registerCubit.deleteData(id);
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,7 +89,11 @@ class _RegistrationPageState extends State<RegistrationPage> {
             } else if (state is RegisterSubjectListFail) {
             } else if (state is RegisterStudentAndSubjectDetailsLOading) {
             } else if (state is RegisterStudentAndSubjectDetailsSucces) {
-            } else if (state is RegisterStudentAndSubjectDetailsFail) {}
+              //   state.detailsOfStudent.id;
+            } else if (state is RegisterStudentAndSubjectDetailsFail) {
+            } else if (state is deletLoding) {
+            } else if (state is deletSuccess) {
+            } else if (state is deletfail) {}
           },
           child: BlocBuilder<RegisterCubit, RegisterState>(
             builder: (context, state) {
@@ -597,8 +628,8 @@ class _RegistrationPageState extends State<RegistrationPage> {
                         children: [
                           GestureDetector(
                             onTap: () {
-                              registerCubit.registerStudent(
-                                  objectStudent.id!, objsubjects.id!);
+                              _showDeleteDialog(context,
+                                  state.detailsOfStudent.id.toString());
                             },
                             child: Container(
                               height: 40,
@@ -623,6 +654,30 @@ class _RegistrationPageState extends State<RegistrationPage> {
               } else if (state is RegisterStudentAndSubjectDetailsFail) {
                 return Center(
                   child: Text("fail"),
+                );
+              } else if (state is deletLoding) {
+                return Center(child: CircularProgressIndicator());
+              } else if (state is deletSuccess) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(
+                      'delete Successfull',
+                    ),
+                    backgroundColor: Colors.green.shade300,
+                  ),
+                );
+                return Center(
+                  child: Container(
+                      padding: EdgeInsets.all(10),
+                      color: Colors.green,
+                      child: Text(
+                        "User Deleted Successfully",
+                        style: TextStyle(color: Colors.white),
+                      )),
+                );
+              } else if (state is deletSuccess) {
+                return Center(
+                  child: Text("SomeThing wrong try again"),
                 );
               } else {
                 return Container();
