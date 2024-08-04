@@ -16,7 +16,6 @@ class _detailpageState extends State<detailpage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       body: Column(
         children: [
           const SizedBox(

@@ -28,7 +28,6 @@ class _SubjectListPageState extends State<SubjectListPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       body: BlocProvider<SubjectsCubit>(
         create: (context) => subjectsCubit,
         child: BlocListener<SubjectsCubit, SubjectsState>(

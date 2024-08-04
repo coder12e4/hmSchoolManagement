@@ -27,7 +27,6 @@ class _ClassRoomListState extends State<ClassRoomList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       body: BlocProvider<ClassRoomCubit>(
         create: (context) => classRoomCubit,
         child: BlocListener<ClassRoomCubit, ClassRoomState>(

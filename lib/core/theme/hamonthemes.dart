@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class ExpenceTrackerthemes {
-  ExpenceTrackerthemes._();
+class ThemeOfapp {
+  ThemeOfapp._();
 
   static ThemeData lightTheme = ThemeData(
       useMaterial3: true,
       brightness: Brightness.light,
-      primaryColor: Colors.red,
+      primaryColor: Colors.white,
       textTheme: EpTextTheme.lightTxttheme,
       scaffoldBackgroundColor: Colors.white,
       elevatedButtonTheme: Epelevatedbuttontheme.lightthem,
@@ -17,7 +17,7 @@ class ExpenceTrackerthemes {
   static ThemeData darkTheme = ThemeData(
       useMaterial3: true,
       brightness: Brightness.dark,
-      primaryColor: Colors.red,
+      primaryColor: Colors.white,
       textTheme: EpTextTheme.darkTxttheme,
       scaffoldBackgroundColor: Colors.black,
       elevatedButtonTheme: Epelevatedbuttontheme.Darkthem,
