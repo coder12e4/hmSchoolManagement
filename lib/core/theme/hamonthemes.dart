@@ -72,10 +72,11 @@ class EpTextTheme {
         color: Colors.black,
         fontFamily: "regular"),
     bodyMedium: const TextStyle().copyWith(
-        fontSize: 10,
-        fontWeight: FontWeight.normal,
-        color: Colors.black,
-        fontFamily: "regular"),
+      fontSize: 10,
+      fontWeight: FontWeight.w600,
+      color: Colors.black,
+      fontFamily: "regular",
+    ),
     labelMedium: const TextStyle().copyWith(
         fontSize: 8,
         fontWeight: FontWeight.normal,
@@ -126,7 +127,7 @@ class EpTextTheme {
         color: Colors.white,
         fontFamily: "regular"),
     bodyMedium: const TextStyle().copyWith(
-        fontSize: 12, fontWeight: FontWeight.normal, color: Colors.white),
+        fontSize: 12, color: Colors.white, fontWeight: FontWeight.w600),
     labelMedium: const TextStyle().copyWith(
         fontSize: 8,
         fontWeight: FontWeight.normal,
